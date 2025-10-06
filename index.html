@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Cek Winrate KasinoJP</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      color: orange;
+      margin-bottom: 20px;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      width: 250px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: none;
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: orange;
+      color: white;
+      border: none;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #loading {
+      display: none;
+      margin-top: 30px;
+    }
+
+    .spinner {
+      border: 6px solid #f3f3f3;
+      border-top: 6px solid orange;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      margin: auto;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    #result {
+      margin-top: 40px;
+    }
+
+    .game {
+      display: inline-block;
+      margin: 15px;
+      text-align: center;
+    }
+
+    .game img {
+      width: 180px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 2px solid orange;
+    }
+
+    .game-name {
+      margin-top: 10px;
+      color: #00ff99;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Cek Winrate KasinoJP</h1>
+
+  <input type="text" id="userId" placeholder="Masukkan User ID kamu"><br>
+  <button onclick="cekWinrate()">Cek Winrate</button>
+
+  <div id="loading">
+    <div class="spinner"></div>
+    <p>Memproses data winrate kamu...</p>
+  </div>
+
+  <div id="result"></div>
+
+  <script>
+    const games = [
+      { name: "Gates of Olympus", img: "https://cdn.pragmaticplay.com/games/GatesOfOlympus1/thumbnails/cover.jpg" },
+      { name: "Sweet Bonanza", img: "https://cdn.pragmaticplay.com/games/SweetBonanza/thumbnails/cover.jpg" },
+      { name: "Starlight Princess", img: "https://cdn.pragmaticplay.com/games/StarlightPrincess/thumbnails/cover.jpg" },
+      { name: "Wild West Gold", img: "https://cdn.pragmaticplay.com/games/WildWestGold/thumbnails/cover.jpg" },
+      { name: "The Dog House", img: "https://cdn.pragmaticplay.com/games/TheDogHouse/thumbnails/cover.jpg" },
+      { name: "Big Bass Bonanza", img: "https://cdn.pragmaticplay.com/games/BigBassBonanza/thumbnails/cover.jpg" },
+      { name: "Madame Destiny", img: "https://cdn.pragmaticplay.com/games/MadameDestinyMegaways/thumbnails/cover.jpg" },
+      { name: "Power of Thor", img: "https://cdn.pragmaticplay.com/games/PowerOfThorMegaways/thumbnails/cover.jpg" },
+      { name: "Aztec Gems", img: "https://cdn.pragmaticplay.com/games/AztecGems/thumbnails/cover.jpg" }
+    ];
+
+    function getRandomGames(count) {
+      const shuffled = games.sort(() => 0.5 - Math.random());
+      return shuffled.slice(0, count);
+    }
+
+    function cekWinrate() {
+      const userId = document.getElementById("userId").value.trim();
+      const loading = document.getElementById("loading");
+      const result = document.getElementById("result");
+
+      if (userId === "") {
+        alert("Masukkan User ID kamu terlebih dahulu.");
+        return;
+      }
+
+      result.innerHTML = "";
+      loading.style.display = "block";
+
+      setTimeout(() => {
+        loading.style.display = "none";
+        const selectedGames = getRandomGames(3);
+
+        let gameHTML = `<p><strong>Winrate berhasil dicek untuk ID:</strong> ${userId}</p>`;
+        gameHTML += `<h3 style="color: orange;">🎰 Rekomendasi Game Khusus Kamu 🎰</h3><div>`;
+
+        selectedGames.forEach(game => {
+          gameHTML += `
+            <div class="game">
+              <img src="${game.img}" alt="${game.name}">
+              <div class="game-name">${game.name}</div>
+            </div>
+          `;
+        });
+
+        gameHTML += `</div>`;
+        result.innerHTML = gameHTML;
+
+      }, 3000);
+    }
+  </script>
+
+</body>
+</html>
