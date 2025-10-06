@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Cek Winrate KasinoJP</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
   <style>
     body {
       margin: 0;
@@ -80,6 +81,15 @@
       background-color: #ff8c00;
     }
 
+    .btn-login-redirect {
+      background-color: #00bfff;
+      margin-top: 10px;
+    }
+
+    .btn-login-redirect:hover {
+      background-color: #009acd;
+    }
+
     #loading {
       display: none;
       margin-top: 30px;
@@ -104,9 +114,18 @@
       margin-top: 30px;
     }
 
+    /* Flex container agar sejajar */
+    .game-wrapper {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      gap: 16px;
+      justify-content: flex-start;
+      padding-bottom: 10px;
+    }
+
     .game {
-      display: inline-block;
-      margin: 10px;
+      flex: 0 0 auto;
       text-align: center;
     }
 
@@ -130,13 +149,17 @@
         font-size: 22px;
       }
 
-      .game img {
-        width: 90%;
-        height: auto;
-      }
-
       input[type="text"] {
         width: 95%;
+      }
+
+      .game-wrapper {
+        gap: 10px;
+      }
+
+      .game img {
+        width: 160px;
+        height: 100px;
       }
     }
   </style>
@@ -153,6 +176,10 @@
     <div class="container">
       <input type="text" id="userId" placeholder="Masukkan User ID kamu"><br>
       <button onclick="cekWinrate()">Cek Winrate</button>
+      <br>
+      <button class="btn-login-redirect" onclick="window.location.href='https://heylink.me/kasinojp-ku/'">
+        🔐 Login ke Akun
+      </button>
 
       <div id="loading">
         <div class="spinner"></div>
@@ -199,7 +226,8 @@
         const selectedGames = getRandomGames(3);
 
         let gameHTML = `<p><strong>Winrate berhasil dicek untuk ID:</strong> ${userId}</p>`;
-        gameHTML += `<h3 style="color: #FFA500;">🎰 Rekomendasi Game Khusus Kamu 🎰</h3><div style="display:flex;flex-wrap:wrap;justify-content:center;">`;
+        gameHTML += `<h3 style="color: #FFA500;">🎰 Rekomendasi Game Khusus Kamu 🎰</h3>`;
+        gameHTML += `<div class="game-wrapper">`;
 
         selectedGames.forEach(game => {
           gameHTML += `
