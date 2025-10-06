@@ -6,7 +6,6 @@
   <title>Cek Winrate KasinoJP</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanwzxKUEfVJjoJw9IRbNpDOKt8q5zPzRMDGmzZLsvX2Wsyq+0C+/4A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
-    /* Background */
     body {
       margin: 0;
       padding: 0;
@@ -16,14 +15,12 @@
       color: #fff;
     }
 
-    /* Overlay */
     .overlay {
       background-color: rgba(0, 0, 0, 0.75);
       min-height: 100vh;
       padding: 20px;
     }
 
-    /* Header with login icon */
     .header {
       display: flex;
       justify-content: space-between;
@@ -45,7 +42,6 @@
       color: orange;
     }
 
-    /* Main Content */
     .container {
       max-width: 600px;
       margin: 50px auto 0 auto;
@@ -156,18 +152,17 @@
   </div>
 
   <script>
-    // RAW DATA GAME — tinggal ganti URL dan nama
-     const rawData = [
-  { name: "Gates of Olympus", img: "https://raw.githubusercontent.com/kasinojp1/cekwinrate2/main/GatesOfOlympus1.png" },
-  { name: "STARLIGHT PRINCESS", img: "https://raw.githubusercontent.com/kasinojp1/cekwinrate2/main/StarlightPrincess.png" },
-  { name: "SWEET BONANZA", img: "https://raw.githubusercontent.com/kasinojp1/cekwinrate2/main/SweetBonanza.png" },
-  { name: "AZTEC GEMS", img: "https://raw.githubusercontent.com/kasinojp1/cekwinrate2/main/azteg2.png" },
-  { name: "WILD WEST", img: "https://raw.githubusercontent.com/kasinojp1/cekwinrate2/main/WildWestGold.png" },
-  { name: "MAHJONG WAYS", img: "https://raw.githubusercontent.com/kasinojp1/cekwinrate2/main/mahjong1.png" },
-  { name: "MAHJONG WAYS2", img: "https://raw.githubusercontent.com/kasinojp1/cekwinrate2/main/mahjong2.png" },
-  { name: "MAFIA MAYHEM", img: "https://raw.githubusercontent.com/kasinojp1/cekwinrate2/main/mayhem7.png" },
-  { name: "CAPTAIN BOUNTY", img: "https://raw.githubusercontent.com/kasinojp1/cekwinrate2/main/quen2.png" }
-];
+    const rawData = [
+      { name: "Gates of Olympus", img: "https://raw.githubusercontent.com/kasinojp1/cekwinrate2/main/GatesOfOlympus1.png" },
+      { name: "STARLIGHT PRINCESS", img: "https://raw.githubusercontent.com/kasinojp1/cekwinrate2/main/StarlightPrincess.png" },
+      { name: "SWEET BONANZA", img: "https://raw.githubusercontent.com/kasinojp1/cekwinrate2/main/SweetBonanza.png" },
+      { name: "AZTEC GEMS", img: "https://raw.githubusercontent.com/kasinojp1/cekwinrate2/main/azteg2.png" },
+      { name: "WILD WEST", img: "https://raw.githubusercontent.com/kasinojp1/cekwinrate2/main/WildWestGold.png" },
+      { name: "MAHJONG WAYS", img: "https://raw.githubusercontent.com/kasinojp1/cekwinrate2/main/mahjong1.png" },
+      { name: "MAHJONG WAYS2", img: "https://raw.githubusercontent.com/kasinojp1/cekwinrate2/main/mahjong2.png" },
+      { name: "MAFIA MAYHEM", img: "https://raw.githubusercontent.com/kasinojp1/cekwinrate2/main/mayhem7.png" },
+      { name: "CAPTAIN BOUNTY", img: "https://raw.githubusercontent.com/kasinojp1/cekwinrate2/main/quen2.png" }
+    ];
 
     function getRandomGames(count) {
       const shuffled = rawData.sort(() => 0.5 - Math.random());
