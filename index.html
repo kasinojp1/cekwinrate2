@@ -15,11 +15,12 @@
       margin: 0;
       padding: 0;
       font-family: 'Poppins', sans-serif;
-      background-color: #000000;
-      color: #fff;
       transition: background-color 1s ease, color 1s ease;
+      background-color: #000; /* mulai dari hitam */
+      color: #fff;
     }
 
+    /* Background putih */
     body.light-mode {
       background-color: #fff;
       color: #222;
@@ -28,12 +29,15 @@
     .overlay {
       min-height: 100vh;
       padding: 30px 20px;
-      background-color: transparent;
       transition: background-color 1s ease;
     }
 
     body.light-mode .overlay {
       background-color: #fff8e1;
+    }
+
+    body:not(.light-mode) .overlay {
+      background-color: #000000cc;
     }
 
     .header {
@@ -43,14 +47,14 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-      transition: background 1s ease, color 1s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      transition: background 1s ease;
     }
 
     body.light-mode .header {
       background: linear-gradient(to right, #f57c00, #ffcc80);
       color: #222;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
 
     .header h1 {
@@ -85,15 +89,14 @@
       background: rgba(255, 255, 255, 0.1);
       padding: 35px;
       border-radius: 20px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.7);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
       text-align: center;
-      transition: background-color 1s ease, box-shadow 1s ease, color 1s ease;
+      transition: background-color 1s ease, box-shadow 1s ease;
     }
 
     body.light-mode .container {
       background: #fff8e1;
       box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-      color: #222;
     }
 
     input[type="text"] {
@@ -142,7 +145,6 @@
     #loading {
       display: none;
       margin-top: 30px;
-      color: #ffb74d;
     }
 
     .progress-bar {
@@ -164,7 +166,6 @@
 
     #result {
       margin-top: 30px;
-      color: inherit;
     }
 
     .game-wrapper {
@@ -201,27 +202,6 @@
       background: linear-gradient(to right, #ff5722, #ffc107, #8bc34a, #00bcd4);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-    }
-
-    /* Tombol login di bawah hasil */
-    #loginAfterResult {
-      margin-top: 20px;
-      padding: 14px 32px;
-      background: #00bcd4;
-      color: white;
-      font-size: 16px;
-      font-weight: 600;
-      border: none;
-      border-radius: 12px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-      display: none;
-      text-decoration: none;
-      display: inline-block;
-    }
-
-    #loginAfterResult:hover {
-      background: #019ab3;
     }
 
     @media (max-width: 768px) {
@@ -264,9 +244,6 @@
       </div>
 
       <div id="result"></div>
-
-      <!-- Tombol login setelah hasil -->
-      <a id="loginAfterResult" href="https://heylink.me/kasinojp-ku/" target="_blank">🔐 Login ke Akun</a>
     </div>
   </div>
 
@@ -283,7 +260,7 @@
       { name: "CAPTAIN BOUNTY", img: "https://raw.githubusercontent.com/kasinojp1/cekwinrate2/main/quen2.png" }
     ];
 
-    // Auto toggle background every 10 seconds
+    // Auto toggle background every 10s
     setInterval(() => {
       document.body.classList.toggle('light-mode');
     }, 10000);
@@ -299,7 +276,6 @@
       const result = document.getElementById("result");
       const progressBar = document.getElementById("progressBar");
       const progressPercent = document.getElementById("progressPercent");
-      const loginAfterResult = document.getElementById("loginAfterResult");
 
       if (userId === "") {
         alert("Masukkan User ID kamu terlebih dahulu.");
@@ -308,27 +284,28 @@
 
       result.innerHTML = "";
       loading.style.display = "block";
-      loginAfterResult.style.display = "none";
 
+      // Progres ke 100 game (simulate)
       let current = 0;
-      const max = 100; // progress sampai 100
+      const total = 100;
       progressBar.style.width = "0%";
       progressPercent.textContent = "0%";
 
       const interval = setInterval(() => {
         current++;
-        const percent = Math.min(current, max);
+        const percent = (current / total) * 100;
         progressBar.style.width = percent + "%";
-        progressPercent.textContent = percent + "%";
+        progressPercent.textContent = Math.floor(percent) + "%";
 
-        if (current >= max) {
+        if (current >= total) {
           clearInterval(interval);
           loading.style.display = "none";
 
+          // Tampilkan 3 game random setelah selesai progres
           const selectedGames = getRandomGames(3);
 
           let gameHTML = `<p><strong>Winrate berhasil dicek untuk ID:</strong> ${userId}</p>`;
-          gameHTML += `<h3 style="color: #ff9800;">🎰 Rekomendasi Game Terbaik Hari Ini</h3>`;
+          gameHTML += `<h3 style="color: #f57c00;">🎰 Rekomendasi Game Terbaik Hari Ini</h3>`;
           gameHTML += `<div class="game-wrapper">`;
 
           selectedGames.forEach(game => {
@@ -336,15 +313,14 @@
               <div class="game">
                 <img src="${game.img}" alt="${game.name}" />
                 <div class="game-name">${game.name}</div>
-              </div>`;
+              </div>
+            `;
           });
 
           gameHTML += `</div>`;
-
           result.innerHTML = gameHTML;
-          loginAfterResult.style.display = "inline-block";
         }
-      }, 30);
+      }, 50); // 50ms * 100 = 5000ms (5 detik total loading)
     }
   </script>
 </body>
