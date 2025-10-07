@@ -107,6 +107,7 @@
       left: 0;
       top: 0;
       z-index: 2;
+      transition: width 0.3s ease;
     }
 
     /* End highlight on right side */
@@ -119,6 +120,11 @@
       border-radius: 0 15px 15px 0;
       box-shadow: 0 0 15px #ff8c00;
       z-index: 3;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .progress-end.visible {
+      opacity: 1;
     }
 
     /* Percentage text */
@@ -152,6 +158,13 @@
       max-width: 90vw;
       margin: 0 auto;
       scroll-behavior: smooth;
+      opacity: 0;
+      transition: opacity 0.6s ease;
+      pointer-events: none;
+    }
+    .game-list.visible {
+      opacity: 1;
+      pointer-events: auto;
     }
 
     .game-list::-webkit-scrollbar {
@@ -245,6 +258,7 @@
     const userIdInput = document.getElementById('userId');
     const checkBtn = document.getElementById('checkBtn');
     const progressStripes = document.querySelector('.progress-stripes');
+    const progressEnd = document.querySelector('.progress-end');
     const percentText = document.getElementById('percentText');
     const progressWrapper = document.querySelector('.progress-wrapper');
 
@@ -298,30 +312,34 @@
 
       // Reset progress bar & text
       progressStripes.style.width = '0%';
+      progressEnd.classList.remove('visible');
       percentText.textContent = '0% (–)';
       progressWrapper.setAttribute('aria-valuenow', 0);
+      gameList.classList.remove('visible');
+      gameList.innerHTML = '';
 
-      // Pilih 3 game acak dan render
-      const randomGames = getRandomGames(games, 3);
-      renderGames(randomGames);
-
-      // Animate progress bar ke 94% selama 20 detik
+      // Animate progress bar ke 100% selama 20 detik
       animateProgress(20000, (progress) => {
-        const percent = Math.floor(progress * 94);
+        const percent = Math.floor(progress * 100);
         progressStripes.style.width = percent + '%';
-        percentText.textContent = `${percent}% (${userId})`;
+        percentText.textContent = `${percent}% (–)`;
         progressWrapper.setAttribute('aria-valuenow', percent);
       }, () => {
         progressStripes.style.width = '100%';
-        percentText.textContent = `100% (${userId})`;
+        progressEnd.classList.add('visible');
+
+        // Setelah progress selesai, baru tampilkan hasil winrate 94% dan 3 game acak
+        const userId = userIdInput.value.trim();
+        percentText.textContent = `94% (${userId})`;
         progressWrapper.setAttribute('aria-valuenow', 94);
+
+        const randomGames = getRandomGames(games, 3);
+        renderGames(randomGames);
+        gameList.classList.add('visible');
       });
     }
 
     checkBtn.addEventListener('click', startCheck);
-
-    // Optional: bisa auto-start kalau mau
-    // startCheck();
   </script>
 </body>
 </html>
