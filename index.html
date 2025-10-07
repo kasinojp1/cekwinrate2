@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Cek Winrate KASINOJP</title>
+  <title>Cek Winrate GloryGame99</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     /* Reset */
@@ -13,11 +13,12 @@
     body {
       margin: 0; padding: 20px;
       font-family: 'Poppins', sans-serif;
-      background: #0b0033;
+      background: #000000; /* full hitam */
       color: #ff8c00; /* oren */
       text-align: center;
       user-select: none;
       overflow-x: hidden;
+      min-height: 100vh;
     }
 
     h1 {
@@ -34,10 +35,16 @@
     /* Input and button container */
     .input-group {
       margin-bottom: 25px;
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: nowrap;
+      max-width: 100%;
     }
 
     input[type="text"] {
-      width: 280px;
+      flex-grow: 1;
+      min-width: 0;
       padding: 12px 16px;
       font-size: 1rem;
       border-radius: 6px 0 0 6px;
@@ -45,6 +52,8 @@
       outline: none;
       color: #222;
       font-weight: 600;
+      max-width: 400px;
+      box-sizing: border-box;
     }
 
     button {
@@ -60,6 +69,7 @@
       text-transform: uppercase;
       text-shadow: 0 0 4px #fff;
       transition: background 0.3s ease, box-shadow 0.3s ease;
+      flex-shrink: 0;
     }
     button:hover {
       background: linear-gradient(90deg, #ffa500, #ff8c00);
@@ -136,6 +146,7 @@
         0 0 20px #ffa500;
       margin-bottom: 40px;
       color: #ff8c00;
+      min-height: 2.5rem;
     }
 
     /* Subtitle */
@@ -181,7 +192,7 @@
     /* Each game card */
     .game-card {
       flex: 0 0 auto;
-      width: 150px;
+      width: 140px;
       background: #663300;
       border-radius: 12px;
       box-shadow:
@@ -191,8 +202,13 @@
       cursor: pointer;
       user-select: none;
       color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
-    .game-card:hover {
+    .game-card:hover,
+    .game-card:focus {
+      outline: none;
       transform: scale(1.05);
       box-shadow:
         0 0 12px #ff8c00,
@@ -216,16 +232,67 @@
         0 0 6px #ffa500;
       user-select: none;
       color: #ffda9e;
+      text-align: center;
+      width: 100%;
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     @keyframes stripesMove {
       0% { background-position: 0 0; }
       100% { background-position: 200% 0; }
     }
+
+    /* RESPONSIVE */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.6rem;
+      }
+
+      .input-group {
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+      input[type="text"] {
+        border-radius: 6px;
+        max-width: 100%;
+        flex-grow: 1;
+      }
+      button {
+        border-radius: 6px;
+        border-left: 2px solid #ff8c00;
+        width: 100%;
+        flex-shrink: 1;
+      }
+
+      .progress-wrapper {
+        height: 20px;
+      }
+
+      #percentText {
+        font-size: 1.6rem;
+        margin-bottom: 30px;
+      }
+
+      .subtitle {
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+      }
+
+      .game-card {
+        width: 110px;
+      }
+
+      .game-card img {
+        height: 80px;
+      }
+    }
   </style>
 </head>
 <body>
-  <h1>🎰 CEK WINRATE KAMU DI KASINOJP</h1>
+  <h1>🎰 CEK WINRATE KAMU DI GLORYGAME99</h1>
   <div class="input-group">
     <input id="userId" type="text" placeholder="Masukkan User ID kamu" value="98484465846584" />
     <button id="checkBtn">CEK WINRATE</button>
