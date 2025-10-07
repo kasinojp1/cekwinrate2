@@ -16,8 +16,8 @@
       margin: 0;
       padding: 0;
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #fceabb 0%, #f8b500 100%);
-      color: #222;
+      background: linear-gradient(to right top, #fff8e1, #fff3cd, #ffe0b2, #ffd54f, #ffcc80);
+      color: #333;
     }
 
     .overlay {
@@ -26,7 +26,7 @@
     }
 
     .header {
-      background: linear-gradient(to right, #ffffff, #ffe0b2);
+      background: linear-gradient(to right, #ffffff, #fff3e0);
       border-radius: 15px;
       padding: 20px 30px;
       display: flex;
@@ -55,7 +55,7 @@
     .container {
       max-width: 720px;
       margin: 40px auto;
-      background: #fff8e1;
+      background: #ffffff;
       padding: 35px;
       border-radius: 20px;
       box-shadow: 0 8px 24px rgba(0,0,0,0.1);
@@ -70,7 +70,7 @@
       border: 1px solid #ccc;
       font-size: 16px;
       margin-bottom: 15px;
-      background: #fff;
+      background: #fff9f0;
       color: #222;
     }
 
@@ -109,19 +109,23 @@
       margin-top: 30px;
     }
 
-    .spinner {
-      border: 6px solid #f3f3f3;
-      border-top: 6px solid #ff9800;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      animation: spin 1s linear infinite;
-      margin: 10px auto;
+    .progress-bar {
+      width: 0%;
+      height: 14px;
+      background: linear-gradient(90deg, #ff9800, #ffc107, #4caf50, #00bcd4);
+      border-radius: 10px;
+      transition: width 20s linear;
     }
 
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+    .progress-container {
+      background: #eee;
+      border-radius: 10px;
+      height: 14px;
+      width: 100%;
+      max-width: 400px;
+      margin: 20px auto;
+      overflow: hidden;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
     }
 
     #result {
@@ -197,7 +201,9 @@
       </button>
 
       <div id="loading">
-        <div class="spinner"></div>
+        <div class="progress-container">
+          <div class="progress-bar" id="progressBar"></div>
+        </div>
         <p>Memproses data winrate kamu...</p>
       </div>
 
@@ -227,6 +233,7 @@
       const userId = document.getElementById("userId").value.trim();
       const loading = document.getElementById("loading");
       const result = document.getElementById("result");
+      const progressBar = document.getElementById("progressBar");
 
       if (userId === "") {
         alert("Masukkan User ID kamu terlebih dahulu.");
@@ -235,6 +242,12 @@
 
       result.innerHTML = "";
       loading.style.display = "block";
+      progressBar.style.width = "0%";
+
+      // Jalankan progress bar animasi
+      setTimeout(() => {
+        progressBar.style.width = "100%";
+      }, 10);
 
       setTimeout(() => {
         loading.style.display = "none";
@@ -256,7 +269,7 @@
         gameHTML += `</div>`;
         result.innerHTML = gameHTML;
 
-      }, 2500);
+      }, 20000); // 20 detik loading
     }
   </script>
 </body>
