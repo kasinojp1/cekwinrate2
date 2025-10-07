@@ -4,8 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Cek Winrate KasinoJP</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
@@ -18,8 +16,8 @@
       margin: 0;
       padding: 0;
       font-family: 'Poppins', sans-serif;
-      background-color: #f7f7f7;
-      color: #333;
+      background: linear-gradient(135deg, #fceabb 0%, #f8b500 100%);
+      color: #222;
     }
 
     .overlay {
@@ -28,55 +26,52 @@
     }
 
     .header {
-      background-color: #fff;
-      border-radius: 12px;
-      padding: 15px 25px;
+      background: linear-gradient(to right, #ffffff, #ffe0b2);
+      border-radius: 15px;
+      padding: 20px 30px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-      border: 1px solid #e0e0e0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
     .header h1 {
-      color: #FF8C00;
       font-size: 26px;
       margin: 0;
+      color: #f57c00;
     }
 
     .login-icon {
       font-size: 28px;
-      color: #333;
+      color: #555;
       cursor: pointer;
       transition: color 0.3s;
     }
 
     .login-icon:hover {
-      color: #FFA500;
+      color: #f57c00;
     }
 
     .container {
-      max-width: 700px;
+      max-width: 720px;
       margin: 40px auto;
+      background: #fff8e1;
+      padding: 35px;
+      border-radius: 20px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
       text-align: center;
-      background-color: #fff;
-      padding: 30px;
-      border-radius: 15px;
-      border: 1px solid #e0e0e0;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     }
 
     input[type="text"] {
       width: 90%;
-      max-width: 340px;
+      max-width: 360px;
       padding: 14px 16px;
       border-radius: 12px;
       border: 1px solid #ccc;
       font-size: 16px;
       margin-bottom: 15px;
-      outline: none;
       background: #fff;
-      color: #333;
+      color: #222;
     }
 
     input::placeholder {
@@ -85,28 +80,28 @@
 
     button {
       display: inline-block;
-      margin: 8px auto;
-      padding: 14px 30px;
-      background-color: #FFA500;
+      margin: 10px auto;
+      padding: 14px 32px;
+      background: #ff9800;
       color: white;
       font-size: 16px;
       font-weight: 600;
       border: none;
-      border-radius: 10px;
+      border-radius: 12px;
       cursor: pointer;
       transition: background 0.3s ease;
     }
 
     button:hover {
-      background-color: #e68a00;
+      background: #f57c00;
     }
 
     .btn-login-redirect {
-      background-color: #00bfff;
+      background-color: #00bcd4;
     }
 
     .btn-login-redirect:hover {
-      background-color: #009acd;
+      background-color: #019ab3;
     }
 
     #loading {
@@ -116,7 +111,7 @@
 
     .spinner {
       border: 6px solid #f3f3f3;
-      border-top: 6px solid #FFA500;
+      border-top: 6px solid #ff9800;
       border-radius: 50%;
       width: 40px;
       height: 40px;
@@ -139,8 +134,7 @@
       overflow-x: auto;
       gap: 16px;
       justify-content: flex-start;
-      padding-bottom: 10px;
-      padding-top: 10px;
+      padding: 10px 0;
     }
 
     .game {
@@ -158,14 +152,16 @@
       height: 120px;
       object-fit: cover;
       border-radius: 12px;
-      border: 2px solid #FFA500;
-      box-shadow: 0 4px 12px rgba(255, 165, 0, 0.2);
+      border: 2px solid #f57c00;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
     }
 
     .game-name {
-      margin-top: 8px;
-      color: #333;
+      margin-top: 10px;
       font-weight: 600;
+      background: linear-gradient(to right, #ff5722, #ffc107, #8bc34a, #00bcd4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     @media (max-width: 768px) {
@@ -175,10 +171,6 @@
 
       input[type="text"] {
         width: 95%;
-      }
-
-      .game-wrapper {
-        gap: 12px;
       }
 
       .game img {
@@ -199,8 +191,7 @@
 
     <div class="container">
       <input type="text" id="userId" placeholder="Masukkan User ID kamu"><br>
-      <button onclick="cekWinrate()">🎯 Cek Winrate</button>
-      <br>
+      <button onclick="cekWinrate()">🎯 Cek Winrate</button><br>
       <button class="btn-login-redirect" onclick="window.location.href='https://heylink.me/kasinojp-ku/'">
         🔐 Login ke Akun
       </button>
@@ -250,7 +241,7 @@
         const selectedGames = getRandomGames(3);
 
         let gameHTML = `<p><strong>Winrate berhasil dicek untuk ID:</strong> ${userId}</p>`;
-        gameHTML += `<h3 style="color: #FF8C00;">🎰 Rekomendasi Game Terbaik Hari Ini</h3>`;
+        gameHTML += `<h3 style="color: #f57c00;">🎰 Rekomendasi Game Terbaik Hari Ini</h3>`;
         gameHTML += `<div class="game-wrapper">`;
 
         selectedGames.forEach(game => {
