@@ -3,410 +3,325 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Cek Winrate GloryGame99</title>
+  <title>Cek Winrate KasinoJP</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
-    /* Reset */
     * {
       box-sizing: border-box;
     }
+
     body {
-      margin: 0; padding: 20px;
+      margin: 0;
+      padding: 0;
       font-family: 'Poppins', sans-serif;
-      background: #000000; /* full hitam */
-      color: #ff8c00; /* oren */
-      text-align: center;
-      user-select: none;
-      overflow-x: hidden;
+      transition: background-color 1s ease, color 1s ease;
+      background-color: #000; /* mulai dari hitam */
+      color: #fff;
+    }
+
+    /* Background putih */
+    body.light-mode {
+      background-color: #fff;
+      color: #222;
+    }
+
+    .overlay {
       min-height: 100vh;
+      padding: 30px 20px;
+      transition: background-color 1s ease;
     }
 
-    h1 {
-      font-weight: 600;
-      font-size: 2rem;
-      text-shadow:
-        0 0 8px #ff8c00,
-        0 0 12px #ffa500,
-        0 0 20px #ff8c00;
-      margin-bottom: 20px;
-      color: #ff8c00;
+    body.light-mode .overlay {
+      background-color: #fff8e1;
     }
 
-    /* Input and button container */
-    .input-group {
-      margin-bottom: 25px;
+    body:not(.light-mode) .overlay {
+      background-color: #000000cc;
+    }
+
+    .header {
+      background: linear-gradient(to right, #ffa500, #ffcc80);
+      border-radius: 15px;
+      padding: 20px 30px;
       display: flex;
-      justify-content: center;
-      gap: 0;
-      flex-wrap: nowrap;
-      max-width: 100%;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      transition: background 1s ease;
+    }
+
+    body.light-mode .header {
+      background: linear-gradient(to right, #f57c00, #ffcc80);
+      color: #222;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .header h1 {
+      font-size: 26px;
+      margin: 0;
+      color: #fff;
+      transition: color 1s ease;
+    }
+
+    body.light-mode .header h1 {
+      color: #f57c00;
+    }
+
+    .login-icon {
+      font-size: 28px;
+      color: #fff;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    body.light-mode .login-icon {
+      color: #555;
+    }
+
+    .login-icon:hover {
+      color: #ff9800;
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 40px auto;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 35px;
+      border-radius: 20px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+      text-align: center;
+      transition: background-color 1s ease, box-shadow 1s ease;
+    }
+
+    body.light-mode .container {
+      background: #fff8e1;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
     }
 
     input[type="text"] {
-      flex-grow: 1;
-      min-width: 0;
-      padding: 12px 16px;
-      font-size: 1rem;
-      border-radius: 6px 0 0 6px;
-      border: none;
-      outline: none;
+      width: 90%;
+      max-width: 360px;
+      padding: 14px 16px;
+      border-radius: 12px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+      margin-bottom: 15px;
+      background: #fff;
       color: #222;
-      font-weight: 600;
-      max-width: 400px;
-      box-sizing: border-box;
+      transition: background-color 1s ease, color 1s ease;
+    }
+
+    input::placeholder {
+      color: #999;
     }
 
     button {
-      padding: 12px 20px;
-      font-size: 1rem;
-      font-weight: 600;
-      border: 2px solid #ff8c00;
-      border-left: none;
-      background: linear-gradient(90deg, #ff8c00, #ffa500);
+      display: inline-block;
+      margin: 10px auto;
+      padding: 14px 32px;
+      background: #ff9800;
       color: white;
+      font-size: 16px;
+      font-weight: 600;
+      border: none;
+      border-radius: 12px;
       cursor: pointer;
-      border-radius: 0 6px 6px 0;
-      text-transform: uppercase;
-      text-shadow: 0 0 4px #fff;
-      transition: background 0.3s ease, box-shadow 0.3s ease;
-      flex-shrink: 0;
+      transition: background 0.3s ease;
     }
+
     button:hover {
-      background: linear-gradient(90deg, #ffa500, #ff8c00);
-      box-shadow: 0 0 15px #ff8c00, 0 0 25px #ffa500;
+      background: #f57c00;
     }
 
-    /* Progress bar wrapper */
-    .progress-wrapper {
-      width: 90%;
-      max-width: 700px;
-      height: 25px;
-      background: #331a00;
-      border-radius: 15px;
-      margin: 0 auto 30px auto;
-      box-shadow:
-        inset 0 0 15px #663300,
-        0 0 15px #ff8c00;
+    .btn-login-redirect {
+      background-color: #00bcd4;
+    }
+
+    .btn-login-redirect:hover {
+      background-color: #019ab3;
+    }
+
+    #loading {
+      display: none;
+      margin-top: 30px;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 12px;
+      background: rgba(255, 165, 0, 0.2);
+      border-radius: 8px;
+      margin: 20px 0;
       overflow: hidden;
-      position: relative;
     }
 
-    /* Moving gradient stripes */
-    .progress-stripes {
+    .progress-bar-fill {
       height: 100%;
-      width: 0%;
-      background: linear-gradient(
-        90deg,
-        #ff8c00 0%,
-        #ff9c33 10%,
-        #ffb366 20%,
-        #ffcc99 30%,
-        #ffdca3 40%,
-        #ffa500 50%,
-        #ffcc66 60%,
-        #ffb366 70%,
-        #ff9c33 80%,
-        #ff8c00 90%,
-        #ff8c00 100%
-      );
-      background-size: 200% 100%;
-      animation: stripesMove 1.5s linear infinite;
-      border-radius: 15px 0 0 15px;
-      box-shadow: 0 0 10px #ff8c00;
-      position: absolute;
-      left: 0;
-      top: 0;
-      z-index: 2;
+      width: 0;
+      background: #ff9800;
+      border-radius: 8px;
       transition: width 0.3s ease;
     }
 
-    /* End highlight on right side */
-    .progress-end {
-      position: absolute;
-      top: 0; right: 0;
-      height: 100%;
-      width: 30px;
-      background: linear-gradient(90deg, #ff8c00, transparent);
-      border-radius: 0 15px 15px 0;
-      box-shadow: 0 0 15px #ff8c00;
-      z-index: 3;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-    .progress-end.visible {
-      opacity: 1;
+    #result {
+      margin-top: 30px;
     }
 
-    /* Percentage text */
-    #percentText {
-      font-size: 2rem;
-      font-weight: 600;
-      text-shadow:
-        0 0 10px #ff8c00,
-        0 0 20px #ffa500;
-      margin-bottom: 40px;
-      color: #ff8c00;
-      min-height: 2.5rem;
-    }
-
-    /* Subtitle */
-    .subtitle {
-      font-weight: 600;
-      font-size: 1.3rem;
-      margin-bottom: 15px;
-      text-shadow:
-        0 0 8px #ffa500,
-        0 0 10px #ff8c00;
-      color: #ff8c00;
-    }
-
-    /* Game list container */
-    .game-list {
+    .game-wrapper {
       display: flex;
-      gap: 15px;
+      flex-wrap: nowrap;
       overflow-x: auto;
-      padding-bottom: 10px;
-      max-width: 90vw;
-      margin: 0 auto;
-      scroll-behavior: smooth;
-      opacity: 0;
-      transition: opacity 0.6s ease;
-      pointer-events: none;
-    }
-    .game-list.visible {
-      opacity: 1;
-      pointer-events: auto;
+      gap: 16px;
+      justify-content: flex-start;
+      padding: 10px 0;
     }
 
-    .game-list::-webkit-scrollbar {
-      height: 8px;
-    }
-    .game-list::-webkit-scrollbar-track {
-      background: #331a00;
-    }
-    .game-list::-webkit-scrollbar-thumb {
-      background: #663300;
-      border-radius: 4px;
-    }
-
-    /* Each game card */
-    .game-card {
+    .game {
       flex: 0 0 auto;
-      width: 140px;
-      background: #663300;
-      border-radius: 12px;
-      box-shadow:
-        0 0 8px #ff8c00,
-        0 0 15px #ffa500;
-      transition: transform 0.3s ease;
-      cursor: pointer;
-      user-select: none;
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .game-card:hover,
-    .game-card:focus {
-      outline: none;
-      transform: scale(1.05);
-      box-shadow:
-        0 0 12px #ff8c00,
-        0 0 25px #ffa500;
+      text-align: center;
+      transition: transform 0.3s;
     }
 
-    .game-card img {
-      width: 100%;
-      height: 100px;
-      border-radius: 12px 12px 0 0;
+    .game:hover {
+      transform: scale(1.05);
+    }
+
+    .game img {
+      width: 200px;
+      height: 120px;
       object-fit: cover;
-      display: block;
-      user-select: none;
+      border-radius: 12px;
+      border: 2px solid #f57c00;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
     }
 
     .game-name {
+      margin-top: 10px;
       font-weight: 600;
-      padding: 10px 8px;
-      font-size: 0.9rem;
-      text-shadow:
-        0 0 6px #ffa500;
-      user-select: none;
-      color: #ffda9e;
-      text-align: center;
-      width: 100%;
-      flex-grow: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      background: linear-gradient(to right, #ff5722, #ffc107, #8bc34a, #00bcd4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
-    @keyframes stripesMove {
-      0% { background-position: 0 0; }
-      100% { background-position: 200% 0; }
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 1.6rem;
+    @media (max-width: 768px) {
+      .header h1 {
+        font-size: 20px;
       }
 
-      .input-group {
-        flex-wrap: wrap;
-        gap: 12px;
-      }
       input[type="text"] {
-        border-radius: 6px;
-        max-width: 100%;
-        flex-grow: 1;
-      }
-      button {
-        border-radius: 6px;
-        border-left: 2px solid #ff8c00;
-        width: 100%;
-        flex-shrink: 1;
+        width: 95%;
       }
 
-      .progress-wrapper {
-        height: 20px;
-      }
-
-      #percentText {
-        font-size: 1.6rem;
-        margin-bottom: 30px;
-      }
-
-      .subtitle {
-        font-size: 1.1rem;
-        margin-bottom: 10px;
-      }
-
-      .game-card {
-        width: 110px;
-      }
-
-      .game-card img {
-        height: 80px;
+      .game img {
+        width: 160px;
+        height: 100px;
       }
     }
   </style>
 </head>
 <body>
-  <h1>🎰 CEK WINRATE KAMU DI GLORYGAME99</h1>
-  <div class="input-group">
-    <input id="userId" type="text" placeholder="Masukkan User ID kamu" value="98484465846584" />
-    <button id="checkBtn">CEK WINRATE</button>
-  </div>
+  <div class="overlay">
+    <div class="header">
+      <h1>Cek Winrate KasinoJP</h1>
+      <a href="https://heylink.me/kasinojp-ku/" target="_blank" class="login-icon" title="Login">
+        <i class="fas fa-user-circle"></i>
+      </a>
+    </div>
 
-  <div class="progress-wrapper" aria-label="Progress Bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-    <div class="progress-stripes"></div>
-    <div class="progress-end"></div>
-  </div>
+    <div class="container">
+      <input type="text" id="userId" placeholder="Masukkan User ID kamu" /><br />
+      <button onclick="cekWinrate()">🎯 Cek Winrate</button><br />
+      <button class="btn-login-redirect" onclick="window.location.href='https://heylink.me/kasinojp-ku/'">
+        🔐 Login ke Akun
+      </button>
 
-  <div id="percentText">0% (–)</div>
+      <div id="loading">
+        <div class="progress-bar">
+          <div class="progress-bar-fill" id="progressBar"></div>
+        </div>
+        <p>Memproses data winrate kamu... <span id="progressPercent">0%</span></p>
+      </div>
 
-  <div class="subtitle">🎯 GAME AUTO JACKPOT KHUSUS AKUNMU 🎯</div>
-
-  <div class="game-list" id="gameList" tabindex="0" aria-label="Daftar game jackpot">
-    <!-- Game cards akan diinject oleh JS -->
+      <div id="result"></div>
+    </div>
   </div>
 
   <script>
-    const games = [
-      { name: "Gates of Gatotkaca", img: "https://raw.githubusercontent.com/kasinojp1/cekwinrate2/main/GatesOfOlympus1.png" },
-      { name: "Sugar Rush", img: "https://raw.githubusercontent.com/kasinojp1/cekwinrate2/main/SweetBonanza.png" },
-      { name: "Caishen Wins", img: "https://raw.githubusercontent.com/kasinojp1/cekwinrate2/main/mahjong1.png" },
-      { name: "Treasure of Aztec", img: "https://raw.githubusercontent.com/kasinojp1/cekwinrate2/main/azteg2.png" },
-      { name: "Speed Winner", img: "https://raw.githubusercontent.com/kasinojp1/cekwinrate2/main/WildWestGold.png" },
-      { name: "5 Lions Megaways", img: "https://raw.githubusercontent.com/kasinojp1/cekwinrate2/main/mahjong2.png" }
+    const rawData = [
+      { name: "Gates of Olympus", img: "https://raw.githubusercontent.com/kasinojp1/cekwinrate2/main/GatesOfOlympus1.png" },
+      { name: "STARLIGHT PRINCESS", img: "https://raw.githubusercontent.com/kasinojp1/cekwinrate2/main/StarlightPrincess.png" },
+      { name: "SWEET BONANZA", img: "https://raw.githubusercontent.com/kasinojp1/cekwinrate2/main/SweetBonanza.png" },
+      { name: "AZTEC GEMS", img: "https://raw.githubusercontent.com/kasinojp1/cekwinrate2/main/azteg2.png" },
+      { name: "WILD WEST", img: "https://raw.githubusercontent.com/kasinojp1/cekwinrate2/main/WildWestGold.png" },
+      { name: "MAHJONG WAYS", img: "https://raw.githubusercontent.com/kasinojp1/cekwinrate2/main/mahjong1.png" },
+      { name: "MAHJONG WAYS2", img: "https://raw.githubusercontent.com/kasinojp1/cekwinrate2/main/mahjong2.png" },
+      { name: "MAFIA MAYHEM", img: "https://raw.githubusercontent.com/kasinojp1/cekwinrate2/main/mayhem7.png" },
+      { name: "CAPTAIN BOUNTY", img: "https://raw.githubusercontent.com/kasinojp1/cekwinrate2/main/quen2.png" }
     ];
 
-    const gameList = document.getElementById('gameList');
-    const userIdInput = document.getElementById('userId');
-    const checkBtn = document.getElementById('checkBtn');
-    const progressStripes = document.querySelector('.progress-stripes');
-    const progressEnd = document.querySelector('.progress-end');
-    const percentText = document.getElementById('percentText');
-    const progressWrapper = document.querySelector('.progress-wrapper');
+    // Auto toggle background every 10s
+    setInterval(() => {
+      document.body.classList.toggle('light-mode');
+    }, 10000);
 
-    let animationFrameId = null;
-
-    function animateProgress(duration, onUpdate, onComplete) {
-      let start = null;
-      function step(timestamp) {
-        if (!start) start = timestamp;
-        const elapsed = timestamp - start;
-        const progress = Math.min(elapsed / duration, 1);
-        onUpdate(progress);
-        if (progress < 1) {
-          animationFrameId = requestAnimationFrame(step);
-        } else {
-          onComplete();
-        }
-      }
-      animationFrameId = requestAnimationFrame(step);
-    }
-
-    function getRandomGames(arr, count) {
-      const shuffled = [...arr].sort(() => 0.5 - Math.random());
+    function getRandomGames(count) {
+      const shuffled = rawData.sort(() => 0.5 - Math.random());
       return shuffled.slice(0, count);
     }
 
-    function renderGames(selectedGames) {
-      gameList.innerHTML = ''; // kosongkan dulu
-      selectedGames.forEach(game => {
-        const card = document.createElement('div');
-        card.className = 'game-card';
-        card.setAttribute('tabindex', '0');
-        card.setAttribute('aria-label', game.name);
-        card.innerHTML = `
-          <img src="${game.img}" alt="${game.name}" loading="lazy" />
-          <div class="game-name">${game.name}</div>
-        `;
-        gameList.appendChild(card);
-      });
-    }
+    function cekWinrate() {
+      const userId = document.getElementById("userId").value.trim();
+      const loading = document.getElementById("loading");
+      const result = document.getElementById("result");
+      const progressBar = document.getElementById("progressBar");
+      const progressPercent = document.getElementById("progressPercent");
 
-    function startCheck() {
-      if (animationFrameId) {
-        cancelAnimationFrame(animationFrameId);
-      }
-      const userId = userIdInput.value.trim();
-      if (!userId) {
-        alert('Masukkan User ID kamu terlebih dahulu.');
+      if (userId === "") {
+        alert("Masukkan User ID kamu terlebih dahulu.");
         return;
       }
 
-      // Reset progress bar & text
-      progressStripes.style.width = '0%';
-      progressEnd.classList.remove('visible');
-      percentText.textContent = '0% (–)';
-      progressWrapper.setAttribute('aria-valuenow', 0);
-      gameList.classList.remove('visible');
-      gameList.innerHTML = '';
+      result.innerHTML = "";
+      loading.style.display = "block";
 
-      // Animate progress bar ke 100% selama 20 detik
-      animateProgress(20000, (progress) => {
-        const percent = Math.floor(progress * 100);
-        progressStripes.style.width = percent + '%';
-        percentText.textContent = `${percent}% (–)`;
-        progressWrapper.setAttribute('aria-valuenow', percent);
-      }, () => {
-        progressStripes.style.width = '100%';
-        progressEnd.classList.add('visible');
+      // Progres ke 100 game (simulate)
+      let current = 0;
+      const total = 100;
+      progressBar.style.width = "0%";
+      progressPercent.textContent = "0%";
 
-        // Setelah progress selesai, baru tampilkan hasil winrate 94% dan 3 game acak
-        const userId = userIdInput.value.trim();
-        percentText.textContent = `94% (${userId})`;
-        progressWrapper.setAttribute('aria-valuenow', 94);
+      const interval = setInterval(() => {
+        current++;
+        const percent = (current / total) * 100;
+        progressBar.style.width = percent + "%";
+        progressPercent.textContent = Math.floor(percent) + "%";
 
-        const randomGames = getRandomGames(games, 3);
-        renderGames(randomGames);
-        gameList.classList.add('visible');
-      });
+        if (current >= total) {
+          clearInterval(interval);
+          loading.style.display = "none";
+
+          // Tampilkan 3 game random setelah selesai progres
+          const selectedGames = getRandomGames(3);
+
+          let gameHTML = `<p><strong>Winrate berhasil dicek untuk ID:</strong> ${userId}</p>`;
+          gameHTML += `<h3 style="color: #f57c00;">🎰 Rekomendasi Game Terbaik Hari Ini</h3>`;
+          gameHTML += `<div class="game-wrapper">`;
+
+          selectedGames.forEach(game => {
+            gameHTML += `
+              <div class="game">
+                <img src="${game.img}" alt="${game.name}" />
+                <div class="game-name">${game.name}</div>
+              </div>
+            `;
+          });
+
+          gameHTML += `</div>`;
+          result.innerHTML = gameHTML;
+        }
+      }, 50); // 50ms * 100 = 5000ms (5 detik total loading)
     }
-
-    checkBtn.addEventListener('click', startCheck);
   </script>
 </body>
 </html>
