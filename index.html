@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Cek Winrate GloryGame99</title>
+  <title>Cek Winrate KASINOJP</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     /* Reset */
@@ -14,7 +14,7 @@
       margin: 0; padding: 20px;
       font-family: 'Poppins', sans-serif;
       background: #0b0033;
-      color: #00ffff;
+      color: #ff8c00; /* oren */
       text-align: center;
       user-select: none;
       overflow-x: hidden;
@@ -24,10 +24,11 @@
       font-weight: 600;
       font-size: 2rem;
       text-shadow:
-        0 0 8px #00ffff,
-        0 0 12px #ff00ff,
-        0 0 20px #00ffff;
+        0 0 8px #ff8c00,
+        0 0 12px #ffa500,
+        0 0 20px #ff8c00;
       margin-bottom: 20px;
+      color: #ff8c00;
     }
 
     /* Input and button container */
@@ -50,19 +51,19 @@
       padding: 12px 20px;
       font-size: 1rem;
       font-weight: 600;
-      border: 2px solid #00ffff;
+      border: 2px solid #ff8c00;
       border-left: none;
-      background: linear-gradient(90deg, #ff00ff, #00ffff);
+      background: linear-gradient(90deg, #ff8c00, #ffa500);
       color: white;
       cursor: pointer;
       border-radius: 0 6px 6px 0;
       text-transform: uppercase;
       text-shadow: 0 0 4px #fff;
-      transition: background 0.3s ease;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
     }
     button:hover {
-      background: linear-gradient(90deg, #00ffff, #ff00ff);
-      box-shadow: 0 0 15px #00ffff, 0 0 25px #ff00ff;
+      background: linear-gradient(90deg, #ffa500, #ff8c00);
+      box-shadow: 0 0 15px #ff8c00, 0 0 25px #ffa500;
     }
 
     /* Progress bar wrapper */
@@ -70,12 +71,12 @@
       width: 90%;
       max-width: 700px;
       height: 25px;
-      background: #111022;
+      background: #331a00;
       border-radius: 15px;
       margin: 0 auto 30px auto;
       box-shadow:
-        inset 0 0 15px #220044,
-        0 0 15px #ff00ff;
+        inset 0 0 15px #663300,
+        0 0 15px #ff8c00;
       overflow: hidden;
       position: relative;
     }
@@ -86,22 +87,22 @@
       width: 0%;
       background: linear-gradient(
         90deg,
-        #ff00ff 0%,
-        #d47eff 10%,
-        #bbbfff 20%,
-        #89c9ff 30%,
-        #5af9ff 40%,
-        #00ffff 50%,
-        #5af9ff 60%,
-        #89c9ff 70%,
-        #bbbfff 80%,
-        #d47eff 90%,
-        #ff00ff 100%
+        #ff8c00 0%,
+        #ff9c33 10%,
+        #ffb366 20%,
+        #ffcc99 30%,
+        #ffdca3 40%,
+        #ffa500 50%,
+        #ffcc66 60%,
+        #ffb366 70%,
+        #ff9c33 80%,
+        #ff8c00 90%,
+        #ff8c00 100%
       );
       background-size: 200% 100%;
       animation: stripesMove 1.5s linear infinite;
       border-radius: 15px 0 0 15px;
-      box-shadow: 0 0 10px #00ffff;
+      box-shadow: 0 0 10px #ff8c00;
       position: absolute;
       left: 0;
       top: 0;
@@ -114,9 +115,9 @@
       top: 0; right: 0;
       height: 100%;
       width: 30px;
-      background: linear-gradient(90deg, #00ffff, transparent);
+      background: linear-gradient(90deg, #ff8c00, transparent);
       border-radius: 0 15px 15px 0;
-      box-shadow: 0 0 15px #00ffff;
+      box-shadow: 0 0 15px #ff8c00;
       z-index: 3;
     }
 
@@ -125,9 +126,10 @@
       font-size: 2rem;
       font-weight: 600;
       text-shadow:
-        0 0 10px #00ffff,
-        0 0 20px #ff00ff;
+        0 0 10px #ff8c00,
+        0 0 20px #ffa500;
       margin-bottom: 40px;
+      color: #ff8c00;
     }
 
     /* Subtitle */
@@ -136,8 +138,9 @@
       font-size: 1.3rem;
       margin-bottom: 15px;
       text-shadow:
-        0 0 8px #ff00ff,
-        0 0 10px #00ffff;
+        0 0 8px #ffa500,
+        0 0 10px #ff8c00;
+      color: #ff8c00;
     }
 
     /* Game list container */
@@ -155,10 +158,10 @@
       height: 8px;
     }
     .game-list::-webkit-scrollbar-track {
-      background: #110022;
+      background: #331a00;
     }
     .game-list::-webkit-scrollbar-thumb {
-      background: #330055;
+      background: #663300;
       border-radius: 4px;
     }
 
@@ -166,20 +169,21 @@
     .game-card {
       flex: 0 0 auto;
       width: 150px;
-      background: #220044;
+      background: #663300;
       border-radius: 12px;
       box-shadow:
-        0 0 8px #ff00ff,
-        0 0 15px #00ffff;
+        0 0 8px #ff8c00,
+        0 0 15px #ffa500;
       transition: transform 0.3s ease;
       cursor: pointer;
       user-select: none;
+      color: #fff;
     }
     .game-card:hover {
       transform: scale(1.05);
       box-shadow:
-        0 0 12px #ff00ff,
-        0 0 25px #00ffff;
+        0 0 12px #ff8c00,
+        0 0 25px #ffa500;
     }
 
     .game-card img {
@@ -192,13 +196,13 @@
     }
 
     .game-name {
-      color: #00ffff;
       font-weight: 600;
       padding: 10px 8px;
       font-size: 0.9rem;
       text-shadow:
-        0 0 6px #00ffff;
+        0 0 6px #ffa500;
       user-select: none;
+      color: #ffda9e;
     }
 
     @keyframes stripesMove {
@@ -208,7 +212,7 @@
   </style>
 </head>
 <body>
-  <h1>🎰 CEK WINRATE KAMU DI GLORYGAME99</h1>
+  <h1>🎰 CEK WINRATE KAMU DI KASINOJP</h1>
   <div class="input-group">
     <input id="userId" type="text" placeholder="Masukkan User ID kamu" value="98484465846584" />
     <button id="checkBtn">CEK WINRATE</button>
@@ -224,7 +228,7 @@
   <div class="subtitle">🎯 GAME AUTO JACKPOT KHUSUS AKUNMU 🎯</div>
 
   <div class="game-list" id="gameList" tabindex="0" aria-label="Daftar game jackpot">
-    <!-- Game cards injected by JS -->
+    <!-- Game cards akan diinject oleh JS -->
   </div>
 
   <script>
@@ -237,20 +241,7 @@
       { name: "5 Lions Megaways", img: "https://raw.githubusercontent.com/kasinojp1/cekwinrate2/main/mahjong2.png" }
     ];
 
-    // Render game cards
     const gameList = document.getElementById('gameList');
-    games.forEach(game => {
-      const card = document.createElement('div');
-      card.className = 'game-card';
-      card.setAttribute('tabindex', '0');
-      card.setAttribute('aria-label', game.name);
-      card.innerHTML = `
-        <img src="${game.img}" alt="${game.name}" loading="lazy" />
-        <div class="game-name">${game.name}</div>
-      `;
-      gameList.appendChild(card);
-    });
-
     const userIdInput = document.getElementById('userId');
     const checkBtn = document.getElementById('checkBtn');
     const progressStripes = document.querySelector('.progress-stripes');
@@ -275,6 +266,26 @@
       animationFrameId = requestAnimationFrame(step);
     }
 
+    function getRandomGames(arr, count) {
+      const shuffled = [...arr].sort(() => 0.5 - Math.random());
+      return shuffled.slice(0, count);
+    }
+
+    function renderGames(selectedGames) {
+      gameList.innerHTML = ''; // kosongkan dulu
+      selectedGames.forEach(game => {
+        const card = document.createElement('div');
+        card.className = 'game-card';
+        card.setAttribute('tabindex', '0');
+        card.setAttribute('aria-label', game.name);
+        card.innerHTML = `
+          <img src="${game.img}" alt="${game.name}" loading="lazy" />
+          <div class="game-name">${game.name}</div>
+        `;
+        gameList.appendChild(card);
+      });
+    }
+
     function startCheck() {
       if (animationFrameId) {
         cancelAnimationFrame(animationFrameId);
@@ -285,30 +296,32 @@
         return;
       }
 
-      // Reset progress bar width & text
+      // Reset progress bar & text
       progressStripes.style.width = '0%';
       percentText.textContent = '0% (–)';
       progressWrapper.setAttribute('aria-valuenow', 0);
 
-      // Animate progress bar to 94% in 20 seconds
+      // Pilih 3 game acak dan render
+      const randomGames = getRandomGames(games, 3);
+      renderGames(randomGames);
+
+      // Animate progress bar ke 94% selama 20 detik
       animateProgress(20000, (progress) => {
         const percent = Math.floor(progress * 94);
         progressStripes.style.width = percent + '%';
         percentText.textContent = `${percent}% (${userId})`;
         progressWrapper.setAttribute('aria-valuenow', percent);
       }, () => {
-        // When done, lock width at 94%
-        progressStripes.style.width = '94%';
-        percentText.textContent = `94% (${userId})`;
+        progressStripes.style.width = '100%';
+        percentText.textContent = `100% (${userId})`;
         progressWrapper.setAttribute('aria-valuenow', 94);
       });
     }
 
     checkBtn.addEventListener('click', startCheck);
 
-    // Optional: start animation on page load with default userId
+    // Optional: bisa auto-start kalau mau
     // startCheck();
   </script>
 </body>
 </html>
-
